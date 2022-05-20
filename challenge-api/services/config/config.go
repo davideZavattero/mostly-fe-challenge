@@ -6,8 +6,9 @@ import (
 )
 
 type Config struct {
-	port string
-	db   string
+	port      string
+	db        string
+	isRelease bool
 }
 
 func (c *Config) Port() string {
@@ -16,6 +17,10 @@ func (c *Config) Port() string {
 
 func (c *Config) DB() string {
 	return c.db
+}
+
+func (c *Config) IsRelease() bool {
+	return c.isRelease
 }
 
 func New() (*Config, error) {
@@ -33,7 +38,13 @@ func New() (*Config, error) {
 		port = "5335"
 	}
 
-	conf := &Config{port, db}
+	isDev := os.Getenv("IS_DEV")
+	isRelease := true
+	if len(isDev) > 0 {
+		isRelease = false
+	}
+
+	conf := &Config{port, db, isRelease}
 
 	return conf, nil
 }

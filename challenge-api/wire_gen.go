@@ -13,6 +13,8 @@ import (
 	"challenge-api/services/db"
 	"challenge-api/services/jobs"
 	"challenge-api/services/users"
+	"fmt"
+	"github.com/gin-gonic/gin"
 	"log"
 )
 
@@ -45,6 +47,14 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	if sc.Config.IsRelease() {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	r := routes.SetupRoutes(sc)
+
+	if sc.Config.IsRelease() {
+		fmt.Println("API is listening on localhost:" + sc.Config.Port())
+	}
 	r.Run(":" + sc.Config.Port())
 }

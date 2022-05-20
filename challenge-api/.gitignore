@@ -2,3 +2,4 @@
 .DS_Store
 challenge-api
 fake-db.json
+.env

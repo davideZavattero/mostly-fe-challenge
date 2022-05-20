@@ -95,6 +95,7 @@ func New(database *db.DB) (*Jobs, error) {
 					var data db.Data
 					data.Jobs = list
 					data.Users = users
+					jobs.jobsList = list
 					err = jobs.db.SaveIntoDisk(&data)
 				} else {
 					fmt.Println("Error while saving job progresses into fake db")

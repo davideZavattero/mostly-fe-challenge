@@ -4,11 +4,17 @@ import (
 	"challenge-api/services/container"
 	"challenge-api/services/db"
 	"fmt"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func SetupRoutes(sc *container.ServiceContainer) *gin.Engine {
 	routes := gin.Default()
+
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowOrigins = []string{"*"}
+
+	routes.Use(cors.New(corsConfig))
 
 	routes.POST("auth", func(c *gin.Context) {
 		var params AuthParams

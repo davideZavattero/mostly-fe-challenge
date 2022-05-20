@@ -21,10 +21,12 @@ Also there needs to be add job button. It will display a modal with only one tex
 
 # API Server
 
-API server is under `api`. It contains binaries for different OS and CPU architectures. After running it server will generate `fake-db.json` file for storing the data. By default it generates a single user `admin@admin.com` with password `test`. Server has two options that can be specified via env variables
+API server is under `api`. It contains binaries for different OS and CPU architectures. For your convenience  they can be directly started without any extra steps. After running it server will generate `fake-db.json` file for storing the data. By default it generates a single user `admin@admin.com` with password `test`. Server has two options that can be specified via env variables
 
  - `DB` - it indicates json file name that will be used as database. By default it is `fake-db`
  - `PORT` - server port, by default it is `5335`
+
+To manually test the endpoints postman collection is provided in `postman_collection.json`
 
 # API Endpoints
 
@@ -47,7 +49,7 @@ Upon successful completion it returns JWT token that can be used for further req
 
 ### GET /me
 
-It requires auth token provided by /auth endpoint. It must be provided in `Token` header.
+It requires auth token provided by `/auth` endpoint. It must be provided in `Token` header.
 
 It will return user details for given token
 
@@ -63,3 +65,72 @@ It will return user details for given token
 	    name: string;
 	    email: string;
     }
+
+### GET /jobs
+
+It requires auth token provided by `/auth` endpoint. It must be provided in `Token` header.
+
+It will return all available jobs
+
+**Request headers**
+
+    {
+	    Token: string;
+    }
+
+
+**Response Body:**
+
+    [
+	    {
+		    id: string;
+		    name: string;
+		    progress: number;
+	    }
+    ]
+
+### POST /jobs
+
+It requires auth token provided by `/auth` endpoint. It must be provided in `Token` header.
+
+It will create a new job with given name and return new job object
+
+**Request headers**
+
+    {
+	    Token: string;
+    }
+
+
+**Request Body:**
+
+    {
+        name: string;
+    }
+
+**Response Body:**
+
+    {
+	    id: string;
+	    name: string;
+	    progress: number;
+	}
+
+### GET /jobs/status/:jobId
+
+It requires auth token provided by `/auth` endpoint. It must be provided in `Token` header.
+
+Returns progress for a given job
+
+**Request headers**
+
+    {
+	    Token: string;
+    }
+
+
+**Response Body:**
+
+    {
+	    progress: number;
+	}

@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "d715476e-be95-4970-9c67-9ca4af76fa5f",
+		"name": "CI/CD Pipeline API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5335/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "5335",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQxNTIyNTgsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.XRwXo0gBsvM4xcWsVuE28DDdN0adl-YN3kJZ6VsB_r8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5335/me",
+					"host": [
+						"localhost"
+					],
+					"port": "5335",
+					"path": [
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jobs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQxNTIyNTgsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.XRwXo0gBsvM4xcWsVuE28DDdN0adl-YN3kJZ6VsB_r8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test job 3\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5335/jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "5335",
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jobs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQxNTIyNTgsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.XRwXo0gBsvM4xcWsVuE28DDdN0adl-YN3kJZ6VsB_r8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5335/jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "5335",
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jobs/status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQxNTIyNTgsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.XRwXo0gBsvM4xcWsVuE28DDdN0adl-YN3kJZ6VsB_r8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5335/jobs/status/5324c80e-51b3-46a3-8d98-e63bbe2a21ed",
+					"host": [
+						"localhost"
+					],
+					"port": "5335",
+					"path": [
+						"jobs",
+						"status",
+						"5324c80e-51b3-46a3-8d98-e63bbe2a21ed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

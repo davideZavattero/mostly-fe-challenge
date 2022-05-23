@@ -1,6 +1,6 @@
 # Requirements
 
-This challenge requires participants to build trivial version of CI/CD Pipeline dashboard. There should be two pages
+This challenge requires participants to build a trivial version of a CI/CD Pipeline dashboard. There should be two pages
 
  - Login page
  - Jobs page

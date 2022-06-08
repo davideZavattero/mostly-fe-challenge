@@ -13,6 +13,7 @@ func SetupRoutes(sc *container.ServiceContainer) *gin.Engine {
 
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowOrigins = []string{"*"}
+	corsConfig.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "token"}
 
 	routes.Use(cors.New(corsConfig))
 

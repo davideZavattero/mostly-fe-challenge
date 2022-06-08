@@ -14,7 +14,7 @@ This should be a simple login page, with two fields, email and password. Before 
 If fields are valid, request should be sent. While user is waiting for the response login button should be disabled, so that the user can't make consecutive requests while login is in progress. If credentials are correct, the user should be redirected to the jobs page. If credentials are not correct, an appropriate message should be displayed.
 
 ### Jobs Page
-This is a simple page that only has one table (without pagination). Each entry in the table represents a running CI/CD job. Jobs have name, id and progress indicator. The table should display at least the name and the progress bar if it is in progress, or some green check-mark if it is completed (i.e progress field says 100)
+This is a simple page that only has one table (without pagination). Each entry in the table represents a running CI/CD job. Jobs have name, id and progress indicator. The table should display at least the name and the progress bar if it is in progress, or some green check-mark if it is completed (i.e progress field says 100). Progress bar updates should happen in 'real-time'
 
 Also there needs to be an `Add Job` button. It will display a modal dialog with only one text field for the job name. This field is required. From this modal dialog, the user can create new jobs. While creation is in progress, the button should be disabled. After the job is created, the modal dialog should be closed and changes should be reflected in the table.
 

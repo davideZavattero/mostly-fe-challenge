@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "23ab32f6-1bf6-47ea-8b98-f75515c721a0",
+      "email": "admin@admin.com",
+      "name": "Admin",
+      "password": "test"
+    }
+  ],
+  "jobs": []
+}

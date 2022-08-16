@@ -1,7 +1,16 @@
+import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  first,
+  firstValueFrom,
+  lastValueFrom,
+  map,
+  Observable,
+  of,
+} from 'rxjs';
 import { ApiEndpoints } from '../../enums/api-endpoints';
-import { UserProfile } from '../../interfaces/user-profile';
+import { UserProfile, UserProfileFull } from '../../interfaces/user-profile';
 import { ApiUrlService } from '../api-url/api-url.service';
 import { HttpService } from '../http/http.service';
 
@@ -10,37 +19,57 @@ import { HttpService } from '../http/http.service';
 })
 export class AuthService {
   private token!: unknown;
+  private usrData!: UserProfileFull;
+
+  private _usrObjectSubject: BehaviorSubject<UserProfileFull> =
+    new BehaviorSubject({} as UserProfileFull);
 
   constructor(
     private apiUrlService: ApiUrlService,
     private httpService: HttpService
   ) {}
-  isUserLoggedIn(): boolean {
-    const usr = this.getUserObj();
-    return typeof usr === 'object';
-  }
 
-  getUserObj(): unknown {
+  async isUserLoggedIn(): Promise<boolean> {
     const token = this.getToken();
-    if (typeof token === 'string') {
-      const usrResponse = this.getUserAsync(token);
-      console.log(usrResponse);
+    if (token) {
+      if (await this.checkUser()) {
+        return Promise.resolve(true);
+      }
+      try {
+        const usr = await firstValueFrom(
+          this.getUser(token as string).pipe(first())
+        );
+        if (usr.name) {
+          this.setUserObj(usr, token as string);
+          return Promise.resolve(true);
+        }
+      } catch (error) {
+        console.warn(error);
+        return Promise.resolve(false);
+      }
     }
-    return null;
+    return Promise.resolve(false);
+  }
+  async checkUser(): Promise<boolean> {
+    return await firstValueFrom(
+      this.getUserObj().pipe(
+        first(),
+        map((el) => {
+          return !!el.name;
+        })
+      )
+    );
   }
 
-  getToken() {
+  getUserObj(): Observable<UserProfileFull> {
+    return this._usrObjectSubject.asObservable();
+  }
+  setUserObj(usrData: UserProfile, token: string): void {
+    this._usrObjectSubject.next({ token, ...usrData });
+  }
+
+  getToken(): unknown {
     return this.token || localStorage.getItem('token');
-  }
-
-  async getUserAsync(token: string) {
-    const resolved = (await new Promise((resolve, reject) => {
-      this.getUser(token).subscribe((res) => {
-        resolve(res);
-      });
-    })) as UserProfile;
-    console.log('aaaaaaaaaa', resolved);
-    return resolved;
   }
 
   getUser(token: string): Observable<UserProfile> {

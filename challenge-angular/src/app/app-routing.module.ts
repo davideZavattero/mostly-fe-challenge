@@ -14,7 +14,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/jobs/jobs.module').then((m) => m.JobsModule),
     canActivate: [LoggedInGuard],
-    pathMatch: 'full',
   },
 ];
 

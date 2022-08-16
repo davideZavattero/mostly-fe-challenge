@@ -6,9 +6,8 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { firstValueFrom, lastValueFrom, map, Observable } from 'rxjs';
 import { Pages } from '../../enums/pages';
-import { LoginComponent } from '../../pages/login/login.component';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
@@ -16,17 +15,13 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class LoggedInGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return (
-      this.authService.isUserLoggedIn() ||
-      this.router.navigate(['/', Pages.LOGIN], { skipLocationChange: true })
-    );
+  async canActivate(): Promise<boolean | UrlTree> {
+    const res = await this.authService.isUserLoggedIn();
+
+    if (await this.authService.isUserLoggedIn()) {
+      return true;
+    }
+
+    return this.router.parseUrl(`/${Pages.LOGIN}`);
   }
 }

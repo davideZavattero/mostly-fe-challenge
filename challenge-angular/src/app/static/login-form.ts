@@ -1,10 +1,15 @@
 import { Validators } from '@angular/forms';
 import { FormFieldTypes } from '../components/form/enums/form-field-types';
-import { FormField } from '../components/form/interfaces/form-field';
+import { InputFieldTypes } from '../components/form/enums/input-field-types';
+import {
+  FormField,
+  InputFormField,
+} from '../components/form/interfaces/form-field';
 
 export const loginForm: FormField[] = [
   {
     type: FormFieldTypes.INPUT,
+    inputType: InputFieldTypes.EMAIL,
     id: 'user-login-email',
     name: 'email',
     label: 'login.email.label',
@@ -16,5 +21,5 @@ export const loginForm: FormField[] = [
         [Validators.email.toString()]: 'form.error.emailWrong',
       },
     },
-  },
+  } as InputFormField,
 ];

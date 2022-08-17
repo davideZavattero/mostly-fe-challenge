@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FormField } from './interfaces/form-field';
 import { FormService } from './services/form/form.service';
 
@@ -9,11 +10,12 @@ import { FormService } from './services/form/form.service';
 })
 export class FormComponent implements OnInit {
   @Input() formFields!: FormField[];
+  public formGroup!: FormGroup;
 
   constructor(private formService: FormService) {}
 
   ngOnInit(): void {
-    const forms = this.formService.generateFormGroup(this.formFields);
-    console.log(this.formFields, forms);
+    this.formGroup = this.formService.generateFormGroup(this.formFields);
+    console.log(this.formFields, this.formGroup);
   }
 }

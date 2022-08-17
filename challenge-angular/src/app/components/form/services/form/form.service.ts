@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  FormControl,
-  FormControlOptions,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormControlOptions, FormGroup } from '@angular/forms';
 import { FormField } from '../../interfaces/form-field';
 
 @Injectable()
@@ -13,7 +7,6 @@ export class FormService {
   constructor() {}
 
   generateFormGroup(formFields: FormField[]): FormGroup {
-    console.log('aeeeee', formFields);
     const formControls = this.generateFormControls(formFields);
     return new FormGroup(formControls);
   }

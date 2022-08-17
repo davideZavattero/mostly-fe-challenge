@@ -6,7 +6,7 @@ export interface FormField {
   type: FormFieldTypes;
   name: string;
   id: string;
-  label?: string;
+  label: string;
   required?: boolean;
   errors?: FormFieldErrors;
   customClasses?: string[];

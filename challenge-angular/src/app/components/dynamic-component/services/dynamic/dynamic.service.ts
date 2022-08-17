@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormFieldTypes } from '../../../form/enums/form-field-types';
+import { InputFieldTypesComponent } from '../../../form/enums/input-field-types';
 import { FormField, InputFormField } from '../../../form/interfaces/form-field';
 
 @Injectable()
@@ -11,7 +12,9 @@ export class DynamicService {
     if (hasFormGroup) {
       const formElement = data as FormField | InputFormField;
       if (formElement.type === FormFieldTypes.INPUT) {
-        return (formElement as InputFormField).inputType;
+        return InputFieldTypesComponent[
+          (formElement as InputFormField).inputType
+        ];
       }
       return formElement.type;
     }

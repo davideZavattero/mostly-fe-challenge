@@ -1,1 +1,24 @@
-<app-form [formFields]="formList"></app-form>
+<div class="login--wrapper">
+  <div class="login--content">
+    <div class="login--content--header">
+      <h2 class="login--content--header--title">
+        {{ "login.title" | translate }}
+      </h2>
+    </div>
+
+    <div class="login--content--error">
+      <app-error
+        [force]="showError"
+        [forceText]="errorText | translate"
+      ></app-error>
+    </div>
+
+    <div class="login--content--body">
+      <app-form
+        [formFields]="formList"
+        [forceDisabled]="disabled"
+        (formSubmitted)="onSubmit($event)"
+      ></app-form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div
+  class="error--wrapper"
+  *ngIf="(formControlEl?.touched && formControlEl?.errors) || force"
+>
+  <div class="error--content">
+    {{
+      forceText ||
+        (data.errors &&
+          formControlEl.errors &&
+          data.errors.customErrorsText[formControlEl.errors | firstKey]) ||
+        "" | translate
+    }}
+  </div>
+</div>

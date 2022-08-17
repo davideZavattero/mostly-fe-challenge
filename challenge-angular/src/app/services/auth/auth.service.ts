@@ -10,6 +10,10 @@ import {
   of,
 } from 'rxjs';
 import { ApiEndpoints } from '../../enums/api-endpoints';
+import {
+  HttpLoginData,
+  HttpLoginDataResponse,
+} from '../../interfaces/http-login-data';
 import { UserProfile, UserProfileFull } from '../../interfaces/user-profile';
 import { ApiUrlService } from '../api-url/api-url.service';
 import { HttpService } from '../http/http.service';
@@ -75,5 +79,28 @@ export class AuthService {
   getUser(token: string): Observable<UserProfile> {
     const url = this.apiUrlService.getUrl(ApiEndpoints.PROFILE);
     return this.httpService.get(url, token) as Observable<UserProfile>;
+  }
+
+  async checkLogin(data: HttpLoginData) {
+    const url = this.apiUrlService.getUrl(ApiEndpoints.AUTH);
+    const result = (await firstValueFrom(
+      this.httpService.post(url, data)
+    )) as HttpLoginDataResponse;
+    const user = await firstValueFrom(this.getUser(result.token));
+    this.setUserObj(user, result.token);
+    return { ...user, token: result.token };
+  }
+
+  logUserIn(data: HttpLoginData) {
+    return new Observable((ret) => {
+      this.checkLogin(data)
+        .then((res) => {
+          ret.next(res);
+        })
+        .catch((error) => {
+          console.error('aaaaaaaaaa', error);
+          ret.error(error);
+        });
+    });
   }
 }

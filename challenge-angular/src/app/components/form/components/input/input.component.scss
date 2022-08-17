@@ -1,0 +1,77 @@
+@use "/src/styles/methods" as m;
+
+$input-padding-y: m.size(0.5);
+
+$content-padding: m.size(2 * 1.2 + 0.5);
+
+@mixin filledText() {
+  top: 0%;
+  font-size: m.rem(11px);
+}
+
+.input {
+  &--wrapper {
+    width: 100%;
+    display: block;
+    margin: 0 0 m.size(2);
+  }
+
+  &--content {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: $content-padding 0 m.size(1);
+  }
+
+  &--label,
+  &--element {
+    display: block;
+    width: 100%;
+  }
+
+  &--label {
+    position: absolute;
+    transition: all 0.25s ease-out;
+    top: $content-padding + $input-padding-y;
+    line-height: m.rem(16px * 1.2);
+    padding: (m.size(0.5) - m.rem(1px)) 0 0;
+    left: 0;
+    z-index: 1;
+    &--required {
+      text-decoration: none;
+      color: m.$color-alert;
+      margin: 0 0 0 m.size(0.25);
+    }
+
+    &.label-up {
+      @include filledText();
+    }
+  }
+
+  &--element {
+    font-size: m.size(2);
+    line-height: 1.2em;
+    background: none;
+    border: none;
+    border-bottom: 1px solid m.$color-gray-300;
+    padding: $input-padding-y m.size(1);
+    min-height: 1em;
+    z-index: 10;
+
+    &:focus,
+    &.ng-dirty {
+      + .input--label {
+        @include filledText();
+      }
+    }
+
+    &.ng-invalid.ng-touched {
+      border-bottom-color: m.$color-alert;
+
+      &,
+      + .input--label {
+        color: m.$color-alert;
+      }
+    }
+  }
+}

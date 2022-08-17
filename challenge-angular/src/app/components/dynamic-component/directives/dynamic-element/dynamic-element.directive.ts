@@ -4,5 +4,5 @@ import { Directive, Input } from '@angular/core';
   selector: '[appDynamicElement]',
 })
 export class DynamicElementDirective {
-  @Input() data!: unknown;
+  @Input() data: unknown;
 }

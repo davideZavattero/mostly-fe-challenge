@@ -17,4 +17,9 @@ export class HttpService {
   get(url: string, token: string): Observable<unknown> {
     return this.http.get(url, { headers: this.setHeaders(token) });
   }
+
+  post(url: string, body: unknown, token?: string) {
+    const header = token ? { headers: this.setHeaders(token) } : {};
+    return this.http.post(url, body, header);
+  }
 }

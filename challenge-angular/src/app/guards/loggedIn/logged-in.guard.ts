@@ -18,10 +18,12 @@ export class LoggedInGuard implements CanActivate {
   async canActivate(): Promise<boolean | UrlTree> {
     const res = await this.authService.isUserLoggedIn();
 
-    if (await this.authService.isUserLoggedIn()) {
+    if (res) {
       return true;
     }
 
-    return this.router.parseUrl(`/${Pages.LOGIN}`);
+    this.router.navigateByUrl(`/${Pages.LOGIN}`, { skipLocationChange: true });
+    return false;
+    // return this.router.parseUrl(`/${Pages.LOGIN}`);
   }
 }

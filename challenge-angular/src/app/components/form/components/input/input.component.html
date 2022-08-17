@@ -1,0 +1,33 @@
+<div class="input--wrapper" [formGroup]="formGroup">
+  <div class="input--content">
+    <input
+      [id]="data.id || defaultId"
+      [formControlName]="data.name"
+      class="input--element"
+      [type]="data.inputType | inputType"
+      [attr.required]="data.required"
+      [attr.placeholder]="
+        data.placeHolder ? (data.placeHolder | translate) : null
+      "
+    />
+    <label
+      [for]="data.id || defaultId"
+      class="input--label"
+      [ngClass]="{ 'label-up': !!data.placeHolder }"
+    >
+      <span class="input--label--text">{{ data.label | translate }}</span>
+      <abbr
+        [title]="'form.requiredText' | translate"
+        class="input--label--required"
+        >*</abbr
+      >
+    </label>
+  </div>
+
+  <div class="input--error--wrapper">
+    <app-error
+      [data]="data"
+      [formControlEl]="formGroup.controls[data.name]"
+    ></app-error>
+  </div>
+</div>

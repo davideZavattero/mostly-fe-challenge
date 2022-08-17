@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./styles/methods" as m;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: m.$base-font;
+  font-weight: 400;
+}

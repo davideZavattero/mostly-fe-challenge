@@ -1,0 +1,11 @@
+@use "/src/styles/methods" as m;
+
+.error {
+  &--content {
+    width: 100%;
+    padding: m.size(2);
+    border: 1px solid m.$color-alert;
+    color: m.$color-alert;
+    border-radius: m.size(1);
+  }
+}

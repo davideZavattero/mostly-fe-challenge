@@ -1,0 +1,66 @@
+@use "sass:color";
+@use "./variables" as v;
+
+@function rem($px, $root-font: v.$base-font) {
+  @return ($px/$root-font) * 1rem;
+}
+
+@function size($multiplier, $base: v.$base-size) {
+  $calculated: $multiplier * $base;
+  @return rem($calculated);
+}
+
+@function text-color($bkg-color) {
+  @if (lightness($bkg-color) >50) {
+    @return v.$color-black;
+  } @else {
+    @return v.$color-white;
+  }
+}
+
+@function hover-color($color, $variation: v.$color-hover-variation) {
+  @if (lightness($color) > 50) {
+    @return darken($color, $variation);
+  } @else {
+    @return lighten($color, $variation);
+  }
+}
+
+@mixin background-n-text($bkg-color: v.$color-primary) {
+  background-color: $bkg-color;
+  color: text-color($bkg-color);
+}
+
+@mixin btn-style($bkg-color: v.$color-primary) {
+  @include background-n-text($bkg-color);
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  border-radius: size(0.5);
+  font-weight: 700;
+  padding: size(1) size(1.5);
+
+  //bigger btn
+  padding: size(2) size(3);
+  font-size: rem(v.$base-font);
+  letter-spacing: rem(0.8px);
+  &:hover,
+  &:focus {
+    $hover-bkg: hover-color($bkg-color);
+    @include background-n-text($hover-bkg);
+  }
+
+  &:focus {
+    outline: rem(1px) solid text-color($bkg-color);
+    outline-offset: rem(-3px);
+  }
+
+  &:active {
+    background-color: hover-color($bkg-color, v.$color-active-variation);
+  }
+
+  &:disabled {
+    cursor: default;
+    @include background-n-text(rgba($bkg-color, 30%));
+  }
+}

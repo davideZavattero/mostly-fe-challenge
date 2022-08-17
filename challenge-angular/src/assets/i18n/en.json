@@ -1,0 +1,21 @@
+{
+  "form": {
+    "submit": "Submit",
+    "requiredText": "this field is required",
+    "error": {
+      "emailRequired": "e-mail is required",
+      "passwordRequired": "password is required",
+      "emailWrong": "email is not correct"
+    }
+  },
+  "login": {
+    "serverFailure": "Credential not valid, please check again",
+    "title": "login",
+    "email": {
+      "label": "e-mail"
+    },
+    "password": {
+      "label": "password"
+    }
+  }
+}

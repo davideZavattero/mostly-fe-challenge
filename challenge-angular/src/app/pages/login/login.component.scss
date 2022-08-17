@@ -1,0 +1,30 @@
+@use "sass:math";
+@use "/src/styles/methods" as m;
+
+.login {
+  &--wrapper {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    padding: m.size(4);
+  }
+
+  &--content {
+    width: 100%;
+    max-width: m.size(math.floor(math.div(600, 8)));
+    margin: auto;
+    border: m.rem(1px) solid m.$border-color;
+    padding: m.size(3);
+    border-radius: m.size(1);
+
+    &--header {
+      &--title {
+        margin: 0 0 m.size(2);
+      }
+    }
+
+    &--error {
+      margin: 0 0 m.size(1);
+    }
+  }
+}

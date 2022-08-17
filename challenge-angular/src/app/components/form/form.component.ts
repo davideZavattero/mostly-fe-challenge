@@ -37,11 +37,9 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formService.generateFormGroup(this.formFields);
-    console.log(this.formFields, this.formGroup);
   }
 
   onSubmit(evt: any) {
-    console.log(evt, this.formGroup.valid);
     if (this.formGroup.valid) {
       this.formSubmitted.emit(this.formGroup.value);
     }

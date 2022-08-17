@@ -19,7 +19,5 @@ export class InputComponent
     super(elementRef);
   }
 
-  ngOnInit(): void {
-    console.log('eeeeee', InputFieldTypes[this.data.inputType]);
-  }
+  ngOnInit(): void {}
 }

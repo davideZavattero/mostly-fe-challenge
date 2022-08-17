@@ -98,7 +98,6 @@ export class AuthService {
           ret.next(res);
         })
         .catch((error) => {
-          console.error('aaaaaaaaaa', error);
           ret.error(error);
         });
     });

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(data: HttpLoginData) {
-    console.log('eeeeeeeeee', data);
     this.disabled = true;
     this.showError = false;
     this.authService.logUserIn(data).subscribe({

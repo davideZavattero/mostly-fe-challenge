@@ -8,7 +8,6 @@ export class DynamicService {
   constructor() {}
 
   getComponent(data: unknown, hasFormGroup: boolean): unknown {
-    console.log(data);
     if (hasFormGroup) {
       const formElement = data as FormField | InputFormField;
       if (formElement.type === FormFieldTypes.INPUT) {

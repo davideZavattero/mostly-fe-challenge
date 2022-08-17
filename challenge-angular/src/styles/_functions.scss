@@ -1,8 +1,9 @@
 @use "sass:color";
+@use "sass:math";
 @use "./variables" as v;
 
 @function rem($px, $root-font: v.$base-font) {
-  @return ($px/$root-font) * 1rem;
+  @return math.div($px, $root-font) * 1rem;
 }
 
 @function size($multiplier, $base: v.$base-size) {

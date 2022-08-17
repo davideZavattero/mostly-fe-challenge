@@ -1,0 +1,7 @@
+@use "/src/styles/methods" as m;
+
+.jobs {
+  &--wrapper {
+    padding: m.size(4) 0 0;
+  }
+}

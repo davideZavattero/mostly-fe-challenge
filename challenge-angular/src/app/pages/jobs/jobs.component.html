@@ -1,1 +1,13 @@
-<p>jobs works!</p>
+<div class="jobs--wrapper">
+  <div class="jobs--header">
+    <h1>{{ "jobs.title" | translate }}</h1>
+  </div>
+
+  <div class="jobs--body">
+    <div
+      class="jobs--list"
+      app-dynamic-component
+      [data]="currentComponent"
+    ></div>
+  </div>
+</div>

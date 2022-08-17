@@ -1,0 +1,44 @@
+@use "/src/styles/methods" as m;
+
+.checkbox {
+  &--box {
+    width: m.size(2.5);
+    height: m.size(2.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  &--box,
+  &--label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &--element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    &:checked + .checkbox--custom-check {
+      background: m.$color-primary;
+      border: none;
+      outline: m.rem(1px) solid m.$color-white;
+      outline-offset: m.rem(-3px);
+    }
+  }
+
+  &--custom-check {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: m.rem(1px) solid m.$color-gray-300;
+    border-radius: m.size(0.5);
+  }
+
+  &--label {
+    margin: 0 0 0 m.size(1);
+  }
+}

@@ -1,0 +1,19 @@
+@use "/src/styles/methods" as m;
+
+.no-jobs {
+  &--wrapper {
+    padding: m.size(4) m.size(1);
+  }
+  &--text {
+    margin: 0 0 m.size(4);
+    p {
+      text-align: center;
+      font-style: italic;
+    }
+  }
+
+  &--button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

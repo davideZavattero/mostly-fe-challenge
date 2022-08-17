@@ -13,13 +13,13 @@
     ></div>
 
     <div class="form--actions">
-      <div
-        app-button
-        class="form--actions--submit"
-        [type]="submitBtn"
-        [disabled]="formGroup.invalid || forceDisabled"
-      >
-        {{ submitText | translate }}
+      <div class="form--actions--submit">
+        <app-button
+          [type]="submitBtn"
+          [disabled]="formGroup.invalid || forceDisabled"
+        >
+          {{ submitText | translate }}
+        </app-button>
       </div>
     </div>
   </form>

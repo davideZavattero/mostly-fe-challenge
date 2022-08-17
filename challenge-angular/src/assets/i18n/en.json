@@ -16,6 +16,15 @@
     },
     "password": {
       "label": "password"
+    },
+    "rememberMe": {
+      "label": "remember me"
     }
+  },
+  "loading": "Loading...",
+  "jobs": {
+    "title": "Jobs",
+    "noJob": "It seems you don't have any jobs yet",
+    "addFirstJob": "add your first job"
   }
 }

@@ -81,14 +81,19 @@ export class AuthService {
     return this.httpService.get(url, token) as Observable<UserProfile>;
   }
 
-  async checkLogin(data: HttpLoginData) {
+  async checkLogin({ email, password, rememberMe }: HttpLoginData) {
+    const data = { email, password };
+    console.log('eeeeeeeeeee', rememberMe);
     const url = this.apiUrlService.getUrl(ApiEndpoints.AUTH);
     const result = (await firstValueFrom(
       this.httpService.post(url, data)
     )) as HttpLoginDataResponse;
-    const user = await firstValueFrom(this.getUser(result.token));
-    this.setUserObj(user, result.token);
-    return { ...user, token: result.token };
+    const userD = await firstValueFrom(this.getUser(result.token));
+    this.setUserObj(userD, result.token);
+    if (rememberMe) {
+      localStorage.setItem('token', result.token);
+    }
+    return { ...userD, token: result.token };
   }
 
   logUserIn(data: HttpLoginData) {

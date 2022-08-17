@@ -1,0 +1,11 @@
+@use "/src/styles/methods" as m;
+
+.loading {
+  &--wrapper {
+    width: 100%;
+    padding: m.size(2);
+    p {
+      text-align: center;
+    }
+  }
+}

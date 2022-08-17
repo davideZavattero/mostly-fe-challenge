@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { DynamicElement } from '../../interfaces/dynamic-element';
 import { FormField } from '../form/interfaces/form-field';
 import { DynamicElementDirective } from './directives/dynamic-element/dynamic-element.directive';
 import { DynamicFormElementDirective } from './directives/dynamic-form-element/dynamic-form-element.directive';
@@ -18,13 +19,34 @@ import { DynamicService } from './services/dynamic/dynamic.service';
   styleUrls: ['./dynamic-component.component.scss'],
 })
 export class DynamicComponentComponent implements OnInit {
-  @Input() data!: unknown;
   @Input() formGroup?: FormGroup;
+
+  private _data!: unknown;
+  @Input() set data(val: unknown) {
+    if (
+      typeof val !== 'undefined' &&
+      (val as DynamicElement).type &&
+      val !== this._data
+    ) {
+      this._data = val;
+      this.createComponent();
+    }
+  }
+  get data(): unknown {
+    return this._data;
+  }
 
   @ViewChild(DynamicDirective, { static: true }) dynamic!: DynamicDirective;
   constructor(private dynamicService: DynamicService) {}
 
   ngOnInit(): void {
+    if (!this.data) {
+      this.createComponent();
+    }
+  }
+
+  createComponent() {
+    console.log(this.data);
     const hasFormGroup = !!this.formGroup;
 
     const viewRef = this.dynamic.viewContainerRef;

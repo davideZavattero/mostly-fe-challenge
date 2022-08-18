@@ -9,3 +9,7 @@ export interface JobObj extends JobName {
 export interface Job extends JobObj {
   id: string;
 }
+
+export interface JobsList {
+  [key: string]: Job;
+}

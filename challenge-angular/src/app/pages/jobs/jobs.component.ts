@@ -31,6 +31,7 @@ export class JobsComponent implements OnInit {
     this.currentComponent = this.componentsType['loading'];
     this.jobsService.getJobList().subscribe({
       next: (el) => {
+        console.log(el);
         this.jobList = el;
         if (el.length === 0) {
           this.currentComponent = this.componentsType['noJobs'];

@@ -7,5 +7,11 @@
       "password": "test"
     }
   ],
-  "jobs": []
+  "jobs": [
+    {
+      "id": "6a859005-987d-4d70-b075-e6a5ab8bf41d",
+      "name": "test",
+      "progress": 100
+    }
+  ]
 }

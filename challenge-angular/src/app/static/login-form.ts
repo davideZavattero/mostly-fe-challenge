@@ -37,4 +37,11 @@ export const loginForm: FormField[] = [
       },
     },
   } as InputFormField,
+  // {
+  //   type: FormFieldTypes.INPUT,
+  //   inputType: InputFieldTypes.CHECKBOX,
+  //   id: 'user-login-checkbox',
+  //   name: 'rememberMe',
+  //   label: 'login.rememberMe.label',
+  // } as InputFormField,
 ];

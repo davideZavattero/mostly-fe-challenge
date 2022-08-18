@@ -1,8 +1,9 @@
 @use "sass:color";
+@use "sass:math";
 @use "./variables" as v;
 
 @function rem($px, $root-font: v.$base-font) {
-  @return ($px/$root-font) * 1rem;
+  @return math.div($px, $root-font) * 1rem;
 }
 
 @function size($multiplier, $base: v.$base-size) {
@@ -31,7 +32,7 @@
   color: text-color($bkg-color);
 }
 
-@mixin btn-style($bkg-color: v.$color-primary) {
+@mixin btn-style($bkg-color: v.$color-primary, $style: "big") {
   @include background-n-text($bkg-color);
   cursor: pointer;
   text-transform: uppercase;
@@ -40,10 +41,23 @@
   font-weight: 700;
   padding: size(1) size(1.5);
 
-  //bigger btn
-  padding: size(2) size(3);
-  font-size: rem(v.$base-font);
-  letter-spacing: rem(0.8px);
+  @if ($style == "big") {
+    //bigger btn
+    padding: size(2) size(3);
+    font-size: rem(v.$base-font);
+    letter-spacing: rem(0.8px);
+  }
+
+  @if ($style == "button") {
+    //bigger btn
+    padding: size(1);
+    font-size: size(2.5);
+    border-radius: 50%;
+    line-height: 1em;
+    min-width: 1em;
+    min-height: 1em;
+  }
+
   &:hover,
   &:focus {
     $hover-bkg: hover-color($bkg-color);

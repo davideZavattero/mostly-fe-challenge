@@ -1,0 +1,13 @@
+<td
+  class="job-status--column"
+  [ngClass]="['job-status--column_' + col.key]"
+  *ngFor="let col of data | keyvalue"
+>
+  <app-job-progress
+    [value]="col.value"
+    *ngIf="col.key === 'progress'; else plainText"
+  ></app-job-progress>
+  <ng-template #plainText>
+    {{ col.value }}
+  </ng-template>
+</td>

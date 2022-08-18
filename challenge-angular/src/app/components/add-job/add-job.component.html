@@ -1,0 +1,8 @@
+<div class="add-job--wrapper">
+  <app-form
+    [formFields]="formData"
+    [forceDisabled]="disabled"
+    [setFocus]="true"
+    (formSubmitted)="onSubmit($event)"
+  ></app-form>
+</div>

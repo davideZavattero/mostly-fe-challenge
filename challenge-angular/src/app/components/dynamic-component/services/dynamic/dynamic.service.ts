@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DynamicElement } from '../../../../interfaces/dynamic-element';
 import { FormFieldTypes } from '../../../form/enums/form-field-types';
 import { InputFieldTypesComponent } from '../../../form/enums/input-field-types';
 import { FormField, InputFormField } from '../../../form/interfaces/form-field';
@@ -17,6 +18,7 @@ export class DynamicService {
       }
       return formElement.type;
     }
-    return null;
+    const dynEl = data as DynamicElement;
+    return dynEl?.type || null;
   }
 }

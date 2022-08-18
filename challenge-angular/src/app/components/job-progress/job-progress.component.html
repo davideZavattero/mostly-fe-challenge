@@ -1,0 +1,16 @@
+<span class="job-progress--wrapper">
+  <span
+    class="job-progress--progress-bar"
+    [ngClass]="{ 'job-progress--progress-bar_complete': value == 100 }"
+  >
+    <span
+      class="job-progress--progress-bar--bar"
+      [ngStyle]="{ width: value + '%' }"
+    >
+      <span class="job-progress--progress-bar--text">{{ value }}%</span>
+    </span>
+  </span>
+  <span class="job-progress--icon--wrapper" *ngIf="value == 100">
+    <app-icon [icon]="iconComplete"></app-icon>
+  </span>
+</span>

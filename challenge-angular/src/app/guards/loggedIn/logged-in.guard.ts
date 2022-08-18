@@ -17,6 +17,7 @@ export class LoggedInGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   async canActivate(): Promise<boolean | UrlTree> {
     const res = await this.authService.isUserLoggedIn();
+    console.log('aaaaaaaaa', res);
 
     if (res) {
       return true;

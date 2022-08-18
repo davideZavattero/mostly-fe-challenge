@@ -12,8 +12,10 @@ import { FormService } from './services/form/form.service';
 export class FormComponent implements OnInit {
   @Input() formFields!: FormField[];
   @Input() submitText: string = 'form.submit';
+  @Input() setFocus: boolean = false;
 
   private _forceDisabled!: boolean;
+  formFieldShow: FormField[] = [];
   get forceDisabled(): boolean {
     return this._forceDisabled;
   }
@@ -28,6 +30,8 @@ export class FormComponent implements OnInit {
     }
   }
 
+  enabled = false;
+
   @Output() formSubmitted = new EventEmitter();
 
   public formGroup!: FormGroup;
@@ -36,10 +40,14 @@ export class FormComponent implements OnInit {
   constructor(private formService: FormService) {}
 
   ngOnInit(): void {
+    if (this.setFocus) {
+      this.formFields[0].focus = true;
+    }
     this.formGroup = this.formService.generateFormGroup(this.formFields);
+    this.enabled = true;
   }
 
-  onSubmit(evt: any) {
+  onSubmit(_evt: any) {
     if (this.formGroup.valid) {
       this.formSubmitted.emit(this.formGroup.value);
     }

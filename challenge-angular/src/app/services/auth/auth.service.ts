@@ -1,14 +1,5 @@
-import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  first,
-  firstValueFrom,
-  lastValueFrom,
-  map,
-  Observable,
-  of,
-} from 'rxjs';
+import { BehaviorSubject, first, firstValueFrom, map, Observable } from 'rxjs';
 import { ApiEndpoints } from '../../enums/api-endpoints';
 import {
   HttpLoginData,
@@ -36,7 +27,9 @@ export class AuthService {
   async isUserLoggedIn(): Promise<boolean> {
     const token = this.getToken();
     if (token) {
-      if (await this.checkUser()) {
+      const r = await this.checkUser();
+      console.log(r);
+      if (r) {
         return Promise.resolve(true);
       }
       try {
@@ -81,14 +74,20 @@ export class AuthService {
     return this.httpService.get(url, token) as Observable<UserProfile>;
   }
 
-  async checkLogin(data: HttpLoginData) {
+  async checkLogin({ email, password, rememberMe }: HttpLoginData) {
+    const data = { email, password };
     const url = this.apiUrlService.getUrl(ApiEndpoints.AUTH);
     const result = (await firstValueFrom(
       this.httpService.post(url, data)
     )) as HttpLoginDataResponse;
-    const user = await firstValueFrom(this.getUser(result.token));
-    this.setUserObj(user, result.token);
-    return { ...user, token: result.token };
+
+    this.token = result.token;
+    const userD = await firstValueFrom(this.getUser(result.token));
+    this.setUserObj(userD, result.token);
+    if (rememberMe) {
+      localStorage.setItem('token', result.token);
+    }
+    return { ...userD, token: result.token };
   }
 
   logUserIn(data: HttpLoginData) {

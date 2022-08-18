@@ -1,0 +1,17 @@
+@use "/src/styles/methods" as m;
+
+.jobs {
+  &--header {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+
+    &--add {
+      @include m.btn-style();
+      margin: 0 0 0 auto;
+    }
+  }
+  &--wrapper {
+    padding: m.size(4) 0 0;
+  }
+}

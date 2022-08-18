@@ -1,0 +1,10 @@
+<div class="no-jobs--wrapper">
+  <div class="no-jobs--text">
+    <p>{{ "jobs.noJob" | translate }}</p>
+  </div>
+  <div class="no-jobs--button-wrapper">
+    <app-button (click)="onClick($event)">{{
+      "jobs.addFirstJob" | translate
+    }}</app-button>
+  </div>
+</div>

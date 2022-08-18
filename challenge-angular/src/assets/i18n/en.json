@@ -16,6 +16,25 @@
     },
     "password": {
       "label": "password"
+    },
+    "rememberMe": {
+      "label": "remember me"
+    }
+  },
+  "loading": "Loading...",
+  "jobs": {
+    "title": "Jobs",
+    "noJob": "It seems you don't have any jobs yet",
+    "addFirstJob": "add your first job",
+    "addJob": "+ Add a Job",
+    "id": "ID",
+    "name": "Name",
+    "progress": "Progress"
+  },
+  "addJob": {
+    "name": {
+      "label": "Job name",
+      "errorRequired": "Job name is required"
     }
   }
 }

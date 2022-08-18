@@ -8,7 +8,10 @@ import { ApiEndpoints } from '../../enums/api-endpoints';
 export class ApiUrlService {
   constructor() {}
 
-  getUrl(endpoint: ApiEndpoints): string {
-    return `${environment.apiBasePath}/${endpoint}`;
+  getUrl(endpoint: ApiEndpoints, additional?: string): string {
+    return (
+      `${environment.apiBasePath}/${endpoint}` +
+      (additional ? `/${additional}` : '')
+    );
   }
 }

@@ -1,4 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpResponse,
+  HttpResponseBase,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -18,7 +23,7 @@ export class HttpService {
     return this.http.get(url, { headers: this.setHeaders(token) });
   }
 
-  post(url: string, body: unknown, token?: string) {
+  post(url: string, body: unknown, token?: string): Observable<unknown> {
     const header = token ? { headers: this.setHeaders(token) } : {};
     return this.http.post(url, body, header);
   }

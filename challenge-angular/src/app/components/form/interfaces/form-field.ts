@@ -1,4 +1,4 @@
-import { ValidatorFn, Validators } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
 import { FormFieldTypes } from '../enums/form-field-types';
 import { InputFieldTypes } from '../enums/input-field-types';
 
@@ -12,6 +12,7 @@ export interface FormField {
   customClasses?: string[];
   placeHolder?: string;
   defaultValue?: unknown;
+  focus?: boolean;
 }
 
 export interface FormFieldErrors {

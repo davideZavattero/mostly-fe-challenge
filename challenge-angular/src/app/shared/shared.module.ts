@@ -17,6 +17,12 @@ import { DynamicComponentModule } from '../components/dynamic-component/dynamic-
     IconComponent,
   ],
   imports: [CommonModule, TranslateModule, DynamicComponentModule],
-  exports: [ButtonComponent, FirstKeyPipe, LoadingComponent, ModalComponent],
+  exports: [
+    ButtonComponent,
+    FirstKeyPipe,
+    LoadingComponent,
+    ModalComponent,
+    IconComponent,
+  ],
 })
 export class SharedModule {}

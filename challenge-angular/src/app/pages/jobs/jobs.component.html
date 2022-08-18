@@ -1,6 +1,9 @@
 <div class="jobs--wrapper">
   <div class="jobs--header">
-    <h1>{{ "jobs.title" | translate }}</h1>
+    <h1 class="jobs--header--title">{{ "jobs.title" | translate }}</h1>
+    <button class="jobs--header--add" (click)="add()">
+      {{ "job.addJob" }}
+    </button>
   </div>
 
   <div class="jobs--body">

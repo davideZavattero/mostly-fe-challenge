@@ -2,6 +2,10 @@ export interface JobName {
   name: string;
 }
 
+export interface JobProgress {
+  progress: number;
+}
+
 export interface JobObj extends JobName {
   progress: number;
 }

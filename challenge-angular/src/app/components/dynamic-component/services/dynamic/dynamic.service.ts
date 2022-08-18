@@ -19,6 +19,6 @@ export class DynamicService {
       return formElement.type;
     }
     const dynEl = data as DynamicElement;
-    return dynEl.type;
+    return dynEl?.type || null;
   }
 }

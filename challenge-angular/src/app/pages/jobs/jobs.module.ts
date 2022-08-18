@@ -11,6 +11,8 @@ import { NoJobsComponent } from '../../components/no-jobs/no-jobs.component';
 import { SharedModule } from '../../shared/shared.module';
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JobsComponent } from './jobs.component';
+import { JobStatusComponent } from '../../components/job-status/job-status.component';
+import { JobProgressComponent } from '../../components/job-progress/job-progress.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { JobsComponent } from './jobs.component';
     JobComponent,
     JobListComponent,
     AddJobComponent,
+    JobStatusComponent,
+    JobProgressComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,7 @@ import { JobsComponent } from './jobs.component';
     TranslateModule,
     FormModule,
     DynamicComponentModule,
+    SharedModule,
   ],
 })
 export class JobsModule {}

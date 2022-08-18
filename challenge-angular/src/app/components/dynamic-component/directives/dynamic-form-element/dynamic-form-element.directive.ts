@@ -9,12 +9,12 @@ import { DynamicElementDirective } from '../dynamic-element/dynamic-element.dire
 export class DynamicFormElementDirective extends DynamicElementDirective {
   @Input() override data!: FormField;
   @Input() formGroup!: FormGroup;
-  constructor(private elementRef: ViewContainerRef) {
+  constructor(private viewContainerRef: ViewContainerRef) {
     super();
   }
   getId() {
     const el: any = Object.values(
-      this.elementRef.element.nativeElement.attributes
+      this.viewContainerRef.element.nativeElement.attributes
     ).find((el: any) => el.nodeName.indexOf('nghost') > 0);
     return el.nodeName;
   }

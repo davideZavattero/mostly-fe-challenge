@@ -12,6 +12,7 @@ export interface FormField {
   customClasses?: string[];
   placeHolder?: string;
   defaultValue?: unknown;
+  focus?: boolean;
 }
 
 export interface FormFieldErrors {

@@ -52,5 +52,6 @@ export class JobsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.jobSubscription.unsubscribe();
+    this.jobsService.destroyPolling();
   }
 }

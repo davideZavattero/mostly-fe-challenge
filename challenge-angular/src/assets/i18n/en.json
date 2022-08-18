@@ -25,7 +25,11 @@
   "jobs": {
     "title": "Jobs",
     "noJob": "It seems you don't have any jobs yet",
-    "addFirstJob": "add your first job"
+    "addFirstJob": "add your first job",
+    "addJob": "+ Add a Job",
+    "id": "ID",
+    "name": "Name",
+    "progress": "Progress"
   },
   "addJob": {
     "name": {

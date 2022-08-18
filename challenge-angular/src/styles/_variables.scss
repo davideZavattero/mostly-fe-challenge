@@ -1,0 +1,22 @@
+$base-font: 16px;
+
+$base-size: 8px;
+
+$color-primary: #1a237e;
+$color-black: #111;
+$color-white: #fff;
+$color-red: #c62828;
+$color-red-light: #ffcdd2;
+$color-green: #64dd17;
+
+$color-gray-300: #ddd;
+$color-alert: $color-red;
+$color-alert-bkg: $color-red-light;
+
+$color-hover-variation: 10%;
+$color-active-variation: 20%;
+
+$border-color: $color-gray-300;
+
+$z-index-modal: 1000;
+$z-index-backdrop: $z-index-modal - 10;

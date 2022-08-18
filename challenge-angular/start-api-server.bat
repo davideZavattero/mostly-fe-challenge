@@ -1,0 +1,1 @@
+start "API server" "..\challenge-details\api\windows-amd64.exe"

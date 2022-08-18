@@ -1,0 +1,31 @@
+<div class="checkbox--wrapper" [formGroup]="formGroup">
+  <div class="checkbox--content">
+    <span class="checkbox--box">
+      <input
+        [id]="data.id || defaultId"
+        [formControlName]="data.name"
+        class="checkbox--element"
+        [type]="data.inputType | inputType"
+        [attr.required]="data.required"
+      />
+      <span class="checkbox--custom-check"></span>
+    </span>
+    <label [for]="data.id || defaultId" class="checkbox--label">
+      <span class="checkbox--label--text">{{ data.label | translate }}</span>
+      <abbr
+        [title]="'form.requiredText' | translate"
+        class="checkbox--label--required"
+        *ngIf="data.required"
+        >*</abbr
+      >
+    </label>
+  </div>
+
+  <div class="checkbox--error--wrapper">
+    <app-error
+      [data]="data"
+      [formControlEl]="formGroup.controls[data.name]"
+    ></app-error>
+  </div>
+</div>
+{{ formGroup.controls[data.name].value }}

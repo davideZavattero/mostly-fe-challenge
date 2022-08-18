@@ -1,0 +1,16 @@
+<div class="jobs--wrapper">
+  <div class="jobs--header">
+    <h1 class="jobs--header--title">{{ "jobs.title" | translate }}</h1>
+    <button class="jobs--header--add" (click)="add()">
+      {{ "jobs.addJob" | translate }}
+    </button>
+  </div>
+
+  <div class="jobs--body">
+    <div
+      class="jobs--list"
+      app-dynamic-component
+      [data]="currentComponent"
+    ></div>
+  </div>
+</div>

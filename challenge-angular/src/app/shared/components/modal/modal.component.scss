@@ -1,0 +1,21 @@
+@use "/src/styles/methods" as m;
+
+.modal {
+  &--wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: m.$color-white;
+    border-radius: m.size(1);
+    border: m.rem(1px) solid m.$color-gray-300;
+    padding: m.size(4);
+    width: 100%;
+  }
+
+  &--close-icon {
+    @include m.btn-style(m.$color-white, "button");
+    position: absolute;
+    top: m.size(1);
+    right: m.size(1);
+  }
+}

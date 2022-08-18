@@ -1,0 +1,69 @@
+@use "/src/styles/methods" as m;
+
+.job-progress {
+  &--wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: m.size(6);
+    padding: m.size(0.5);
+  }
+
+  &--progress-bar {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    border: 1px solid m.$color-gray-300;
+    border-radius: m.size(0.5);
+    overflow: hidden;
+
+    &--bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: m.size(0.5);
+      background: m.$color-primary;
+      transition: all 0.8s ease-in-out;
+    }
+
+    &_complete {
+      .job-progress--progress-bar--bar {
+        background: m.$color-green;
+      }
+    }
+
+    &--text {
+      position: absolute;
+      top: 50%;
+      right: m.size(0.5);
+      transform: translate(0, -50%);
+      color: m.$color-white;
+    }
+  }
+
+  &--icon {
+    &--wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      width: m.size(4);
+      height: m.size(4);
+      border-radius: 50%;
+      background: m.$color-green;
+      margin: m.size(0.5) 0 0;
+
+      ::ng-deep {
+        .icon--wrapper {
+          display: block;
+          width: 100%;
+          line-height: m.size(4);
+
+          text-align: center;
+          color: m.$color-white;
+        }
+      }
+    }
+  }
+}

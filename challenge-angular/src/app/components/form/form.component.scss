@@ -1,0 +1,12 @@
+@use "/src/styles/methods" as m;
+
+.form {
+  &--actions {
+    display: flex;
+    width: 100%;
+
+    &--submit {
+      margin: 0 0 0 auto;
+    }
+  }
+}

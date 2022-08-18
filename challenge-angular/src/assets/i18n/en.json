@@ -1,0 +1,40 @@
+{
+  "form": {
+    "submit": "Submit",
+    "requiredText": "this field is required",
+    "error": {
+      "emailRequired": "e-mail is required",
+      "passwordRequired": "password is required",
+      "emailWrong": "email is not correct"
+    }
+  },
+  "login": {
+    "serverFailure": "Credential not valid, please check again",
+    "title": "login",
+    "email": {
+      "label": "e-mail"
+    },
+    "password": {
+      "label": "password"
+    },
+    "rememberMe": {
+      "label": "remember me"
+    }
+  },
+  "loading": "Loading...",
+  "jobs": {
+    "title": "Jobs",
+    "noJob": "It seems you don't have any jobs yet",
+    "addFirstJob": "add your first job",
+    "addJob": "+ Add a Job",
+    "id": "ID",
+    "name": "Name",
+    "progress": "Progress"
+  },
+  "addJob": {
+    "name": {
+      "label": "Job name",
+      "errorRequired": "Job name is required"
+    }
+  }
+}

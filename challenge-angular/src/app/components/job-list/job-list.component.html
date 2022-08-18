@@ -1,0 +1,22 @@
+<div class="job-list--wrapper">
+  <table class="job-list--table">
+    <thead>
+      <tr class="job-list--header">
+        <th
+          class="job-list--header--column"
+          *ngFor="let item of headers | keyvalue"
+        >
+          {{ item.value | translate }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        [id]="baseId + '_' + item.key"
+        *ngFor="let item of jobList | keyvalue"
+        app-job-status
+        [data]="item.value"
+      ></tr>
+    </tbody>
+  </table>
+</div>

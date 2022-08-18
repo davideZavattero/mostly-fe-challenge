@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from '../../services/jobs/jobs.service';
 
 @Component({
   selector: 'app-no-jobs',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./no-jobs.component.scss'],
 })
 export class NoJobsComponent implements OnInit {
-  constructor() {}
+  constructor(private jobService: JobsService) {}
 
   ngOnInit(): void {}
 
   onClick(_evt: MouseEvent) {
-    console.log('click!');
+    this.jobService.addNewJob();
   }
 }

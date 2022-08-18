@@ -26,7 +26,6 @@ export class FormService {
     if (field.errors?.validators) {
       formControlOptions.validators = field.errors.validators;
     }
-    console.log(field.defaultValue);
     return new FormControl(field?.defaultValue || null, formControlOptions);
   }
 }

@@ -4,10 +4,19 @@ import { LoadingComponent } from '../components/loading/loading.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FirstKeyPipe } from './pipes/first-key/first-key.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { ModalComponent } from './components/modal/modal.component';
+import { IconComponent } from './components/icon/icon.component';
+import { DynamicComponentModule } from '../components/dynamic-component/dynamic-component.module';
 
 @NgModule({
-  declarations: [ButtonComponent, FirstKeyPipe, LoadingComponent],
-  imports: [CommonModule, TranslateModule],
-  exports: [ButtonComponent, FirstKeyPipe, LoadingComponent],
+  declarations: [
+    ButtonComponent,
+    FirstKeyPipe,
+    LoadingComponent,
+    ModalComponent,
+    IconComponent,
+  ],
+  imports: [CommonModule, TranslateModule, DynamicComponentModule],
+  exports: [ButtonComponent, FirstKeyPipe, LoadingComponent, ModalComponent],
 })
 export class SharedModule {}

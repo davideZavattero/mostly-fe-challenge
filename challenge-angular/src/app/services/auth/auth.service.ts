@@ -1,14 +1,5 @@
-import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  first,
-  firstValueFrom,
-  lastValueFrom,
-  map,
-  Observable,
-  of,
-} from 'rxjs';
+import { BehaviorSubject, first, firstValueFrom, map, Observable } from 'rxjs';
 import { ApiEndpoints } from '../../enums/api-endpoints';
 import {
   HttpLoginData,
@@ -36,7 +27,9 @@ export class AuthService {
   async isUserLoggedIn(): Promise<boolean> {
     const token = this.getToken();
     if (token) {
-      if (await this.checkUser()) {
+      const r = await this.checkUser();
+      console.log(r);
+      if (r) {
         return Promise.resolve(true);
       }
       try {
@@ -83,11 +76,12 @@ export class AuthService {
 
   async checkLogin({ email, password, rememberMe }: HttpLoginData) {
     const data = { email, password };
-    console.log('eeeeeeeeeee', rememberMe);
     const url = this.apiUrlService.getUrl(ApiEndpoints.AUTH);
     const result = (await firstValueFrom(
       this.httpService.post(url, data)
     )) as HttpLoginDataResponse;
+
+    this.token = result.token;
     const userD = await firstValueFrom(this.getUser(result.token));
     this.setUserObj(userD, result.token);
     if (rememberMe) {

@@ -1,0 +1,12 @@
+<div class="modal--wrapper" cdkTrapFocus>
+  <button class="modal--close-icon" (click)="close()">
+    <app-icon [icon]="closeIcon"></app-icon>
+  </button>
+  <div class="modal--content">
+    <div
+      class="modal--element"
+      app-dynamic-component
+      [data]="dynamicElement"
+    ></div>
+  </div>
+</div>

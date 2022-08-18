@@ -19,42 +19,44 @@ import { DynamicService } from './services/dynamic/dynamic.service';
   styleUrls: ['./dynamic-component.component.scss'],
 })
 export class DynamicComponentComponent implements OnInit {
+  @Input() hasFormGroup: boolean = false;
   @Input() formGroup?: FormGroup;
 
   private _data!: unknown;
   @Input() set data(val: unknown) {
     if (
-      typeof val !== 'undefined' &&
-      (val as DynamicElement).type &&
+      val &&
+      typeof (val as DynamicElement).type !== 'undefined' &&
       val !== this._data
     ) {
       this._data = val;
-      this.createComponent();
+      this.createComponent(val);
     }
   }
   get data(): unknown {
     return this._data;
   }
 
+  notCalled = true;
+
   @ViewChild(DynamicDirective, { static: true }) dynamic!: DynamicDirective;
   constructor(private dynamicService: DynamicService) {}
 
   ngOnInit(): void {
-    if (!this.data) {
-      this.createComponent();
+    if (this.notCalled) {
+      this.createComponent(this.data);
     }
   }
 
-  createComponent() {
-    console.log(this.data);
-    const hasFormGroup = !!this.formGroup;
+  createComponent(data: unknown) {
+    this.notCalled = false;
 
     const viewRef = this.dynamic.viewContainerRef;
     viewRef.clear();
 
     const component = this.dynamicService.getComponent(
-      this.data,
-      hasFormGroup
+      data,
+      this.hasFormGroup
     ) as ComponentDecorator;
 
     const componentRef = viewRef.createComponent(component);
@@ -62,7 +64,7 @@ export class DynamicComponentComponent implements OnInit {
     (componentRef.instance as DynamicElementDirective).data = this
       .data as FormField;
 
-    if (hasFormGroup) {
+    if (this.hasFormGroup) {
       (componentRef.instance as DynamicFormElementDirective).formGroup = this
         .formGroup as FormGroup;
     }

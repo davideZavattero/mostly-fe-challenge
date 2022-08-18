@@ -4,13 +4,16 @@
     [formGroup]="formGroup"
     (ngSubmit)="onSubmit($event)"
   >
-    <div
-      class="form--element"
-      app-dynamic-component
-      *ngFor="let field of formFields"
-      [data]="field"
-      [formGroup]="formGroup"
-    ></div>
+    <ng-container *ngIf="enabled">
+      <div
+        class="form--element"
+        app-dynamic-component
+        *ngFor="let field of formFields"
+        [hasFormGroup]="true"
+        [formGroup]="formGroup"
+        [data]="formGroup ? field : null"
+      ></div>
+    </ng-container>
 
     <div class="form--actions">
       <div class="form--actions--submit">

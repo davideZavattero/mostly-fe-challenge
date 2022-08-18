@@ -16,3 +16,6 @@ $color-hover-variation: 10%;
 $color-active-variation: 20%;
 
 $border-color: $color-gray-300;
+
+$z-index-modal: 1000;
+$z-index-backdrop: $z-index-modal - 10;
